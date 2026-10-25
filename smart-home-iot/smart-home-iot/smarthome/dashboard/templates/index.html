@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Home</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>Home</h1>
+    <span id="conn" class="tag">Connecting</span>
+  </header>
+
+  <main class="plan">
+    <section class="room living">
+      <h2>Living room</h2>
+      <div class="readings">
+        <p><b id="temp">–</b><span>°C</span></p>
+        <p><b id="hum">–</b><span>% humidity</span></p>
+      </div>
+      <div class="row"><span>Light</span>
+        <button class="toggle" data-target="livingroom/light" data-key="livingroom/light" data-on-state="ON" data-cmd-on="ON" data-cmd-off="OFF">–</button></div>
+      <div class="row"><span>Fan</span>
+        <button class="toggle" data-target="livingroom/fan" data-key="livingroom/fan" data-on-state="ON" data-cmd-on="ON" data-cmd-off="OFF">–</button></div>
+    </section>
+
+    <section class="room hall">
+      <h2>Hallway</h2>
+      <div class="row"><span>Motion</span><span id="motion" class="tag">–</span></div>
+      <div class="row"><span>Light</span>
+        <button class="toggle" data-target="hallway/light" data-key="hallway/light" data-on-state="ON" data-cmd-on="ON" data-cmd-off="OFF">–</button></div>
+    </section>
+
+    <section class="room door">
+      <h2>Front door</h2>
+      <div class="row"><span>Lock</span>
+        <button class="toggle lock" data-target="frontdoor/lock" data-key="frontdoor/lock" data-on-state="LOCKED" data-cmd-on="LOCK" data-cmd-off="UNLOCK">–</button></div>
+    </section>
+
+    <section class="room system">
+      <h2>Automation</h2>
+      <div class="row"><span>Rules</span>
+        <button class="toggle" data-target="system/auto" data-key="system/auto" data-on-state="ON" data-cmd-on="ON" data-cmd-off="OFF">–</button></div>
+      <p class="hint">Fan follows temperature. Hallway light follows motion.</p>
+      <ul id="devices"></ul>
+    </section>
+  </main>
+
+  <section class="history">
+    <div class="history-head">
+      <h2>History</h2>
+      <label>Metric <select id="metric"><option value="temperature">Temperature</option><option value="humidity">Humidity</option></select></label>
+      <label>Range <select id="range"><option value="15">15 min</option><option value="60" selected>1 hour</option><option value="360">6 hours</option><option value="1440">24 hours</option></select></label>
+    </div>
+    <canvas id="chart" height="220"></canvas>
+    <p id="chart-empty" class="hint" hidden>No readings in this range yet.</p>
+  </section>
+
+  <p id="toast" role="status" hidden></p>
+  <script src="/static/app.js"></script>
+</body>
+</html>

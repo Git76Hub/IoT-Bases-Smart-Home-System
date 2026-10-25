@@ -1,0 +1,11 @@
+# admin: used by the Pi services (automation, dashboard, bridge) and test tools
+user admin
+topic readwrite home/#
+topic readwrite bench/#
+
+# node: used by field devices (ESP32, simulator). Least privilege:
+# may publish sensor/actuator state and its own status, may only read commands.
+user node
+topic write home/+/+/state
+topic write home/devices/+/status
+topic read home/+/+/set

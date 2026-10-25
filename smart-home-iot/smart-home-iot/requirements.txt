@@ -1,0 +1,6 @@
+paho-mqtt>=2.0,<3
+flask>=3.0,<4
+waitress>=3.0,<4
+pyserial>=3.5,<4
+python-dotenv>=1.0,<2
+pytest>=8.0,<9
